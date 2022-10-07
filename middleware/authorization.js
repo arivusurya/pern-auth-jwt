@@ -11,7 +11,7 @@ const Authorization = async (req, res, next) => {
     const payload = await jwt.verify(token, process.env.jwtsecret);
     req.user = payload.user;
   } catch (error) {
-    res.status(505).json(error.message);
+    return res.status(505).json(error.message);
   }
   next();
 };
